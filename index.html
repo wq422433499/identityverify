@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>私密板块权申请</title>
+<link rel="stylesheet" type="text/css" href="../css/main.css" />
+<style type="text/css">
+.demo{width:400px; margin:40px auto 0 auto; min-height:250px;}
+.demo p{line-height:30px; padding:4px}
+.input{height:20px; padding:1px; line-height:20px; border:1px solid #999}
+.btn{position: relative;overflow: hidden;display:inline-block;*display:inline;padding:4px 20px 4px;font-size:14px;line-height:18px;*line-height:20px;color:#fff;text-align:center;vertical-align:middle;cursor:pointer;background-color:#5bb75b;border:1px solid #cccccc;border-color:#e6e6e6 #e6e6e6 #bfbfbf;border-bottom-color:#b3b3b3;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px; margin-left:48px}
+</style>
+<script type="text/javascript">
+function chk_form(){
+	var user = document.getElementById("user");
+	if(user.value==""){
+		alert("用户名不能为空！");
+		return false;
+		//user.focus();
+	}
+	var email = document.getElementById("email");
+	if(email.value==""){
+		alert("Email不能为空！");
+		return false;
+		//email.focus();
+	}
+	var emailadd = document.getElementById("emailadd");
+	if(emailadd.value==""){
+		alert("必须选择邮箱后缀");
+		return false;
+		//email.focus();
+	}
+}
+</script>
+
+</head>
+<body>
+<div id="main">
+   <h2 class="top_title"><a href="http://www.helloweba.com/view-blog-228.html">贝街论坛私密板块权限申请</a></h2>
+    <h3>如果您在公司内部交流板块发帖或回复失败，是因为您没有暂时未认证为该公司员工。通过此页面认证通过后，即可访问该板块</h3>
+   <div class="demo">
+   		<form id="reg" action="register.php" method="post" onsubmit="return chk_form();">
+
+   			<p>请选择您要认证的身份<select name="identity" id = "identity">  
+   			    <option value="emptyforum"> </option>
+    			<option value="20">RBC员工</option>
+   				<option value="21">TD员工</option>
+    			<option value="22">BMO员工</option>
+    			<option value="23">Scotia员工</option>
+   			 	<option value="24">CIBC员工</option>
+    			<option value="25">其他银行员工（申请加入other banks 板块）</option>
+   				<option value="26">Big4 Accounting 员工</option>
+   				<option value="27">Insurance员工</option>
+   				<option value="28">Pension and Investments 员工</option>
+   			 	<option value="29">Telecom and IT 员工</option>   		
+			</select></p>
+			<p>用户名：<input type="text" class="input" name="username" id="user"></p>
+            <p>E-mail：<input type="text" class="input" name="email" id="email">
+<p>@		
+<select name="emailadd" id = "emailadd">
+   			<option value="empty" rel="emptyforum" selected>请先选择你要加入的板块</option>
+
+				<!-- RBC EMAIL -->
+				<option value="hotmail.com" rel="20">hotmail.com</option>
+				<option value="rbc.ca" rel="20">rbc.ca</option>
+				<!-- TD EMAIL -->
+				<option value="hotmail.com" rel="21">hotmail.com</option>
+				<option value="td.ca" rel="21">td.ca</option>
+				<option value="td.ca2" rel="21">td.ca3</option>
+				<!-- BMO EMAIL -->
+				<option value="bmo.com" rel="22">bmo.com</option>
+				<!-- Scotia EMAIL -->
+				<option value="scotia.com" rel="23">scotia.com</option>
+				<!-- CIBC EMAIL -->
+				<option value="cibc.com" rel="24">cibc.com</option>
+				<!-- Other Banks EMAIL -->
+				<option value="bank.com" rel="25">bank.com</option>
+				<!-- Big 4 EMAIL -->
+				<option value="4444.com" rel="26">4444.com</option>
+				<!-- Insurance EMAIL -->
+				<option value="man.com" rel="27">man.com</option>
+				<!-- Pension and Investments EMAIL -->
+				<option value="in.com" rel="28">in.com</option>
+				<!-- Telecom and IT EMAIL -->
+				<option value="rogers.com" rel="29">rogers.com</option>
+   
+</select> </p>  </p>
+            <p><input type="submit" class="btn" value="提交注册"></p>
+        </form>
+
+ <script type="text/javascript">
+var $ = function(id){return document.getElementById(id);};
+(function(){
+    var dateop = {};
+    var manage = $('emailadd');
+    var options = manage.options;
+    for(var i=0;i<options.length;i++){
+        var rel = options[i].getAttribute('rel');
+        if(!rel) continue;
+        if(typeof dateop[rel] == 'undefined')  dateop[rel] = [];
+        dateop[rel].push({'value':options[i].value,'text':options[i].text});
+    };
+    $('identity').onchange = function(){change();};
+    function change(){
+        var type = $('identity').value;
+        var ttname = manage.value;
+        manage.options.length = 0;
+        if(type && typeof dateop[type]){
+            for(var i=0;i<dateop[type].length;i++){
+                manage.options.add(new  Option(dateop[type][i]['text'], 
+                                   dateop[type][i]['value']));
+               if(manage.options[i].value == ttname){ 
+                   manage.options[i].selected = true
+               }
+            }
+        }else{
+            for(var j in dateop){
+                if(typeof dateop[j] != 'object') continue;
+                for(var i=0;i<dateop[j].length;i++){
+                    manage.options.add(new  Option(dateop[j][i]['text'], 
+                                       dateop[j][i]['value']));
+                    if(manage.options[i].value == ttname){ 
+                        manage.options[i].selected = true
+                    }
+                }
+            }
+        }
+    }
+    change();
+})();
+</script>       
+	</div>
+ <br/><div class="ad_76090"><script src="/js/ad_js/bd_76090.js" type="text/javascript"></script></div><br/>
+</div>
+<p id="stat"><script type="text/javascript" src="/js/tongji.js"></script></p>
+</body>
+</html>
