@@ -70,7 +70,7 @@ if(mysql_affected_rows()){//写入成功，发邮件
 	$message = "亲爱的".$username."：感谢您使用贝街论坛。请点击链接验证您的邮箱。<a href='http://forum.baystgroup.ca/identityverify/active.php?verify=".$token."&identity=".$identity."' target='_blank'> http://forum.baystgroup.ca/identityverify/active.php?verify=".$token."&identity=".$identity."如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问，该链接24小时内有效。如果此次激活请求非你本人所发，请忽略本邮件。";
 	$rs = mail($to,$subject,$message);
 	if($rs==1){
-		echo '<script>alert("邮件已发送，请尽快登陆到您的邮箱验证");</script>';	
+		echo '<script>alert("邮件已发送，请尽快登陆到您的邮箱验证");window.history.go(-1);</script>';	
 	}
  }
 mysql_close($con);
