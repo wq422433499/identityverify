@@ -2,10 +2,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
-<?php
 
+<?php
 //连接数据库
-$con = mysql_connect("localhost","******","******");
+$con = mysql_connect("localhost","*******","******");
 if (!$con)
   {
   die('Could not connect: ' . mysql_error());
@@ -66,13 +66,12 @@ mysql_query($sql1);
 if(mysql_affected_rows()){//写入成功，发邮件
 	$to = "$email";    
 	$subject = "贝街论坛验证地址";
-	$from = "gtabaystreet@gmail.com";
+	$from = "forum@baystreetbbs.org";
 	$message = "亲爱的".$username."：感谢您使用贝街论坛。请点击链接验证您的邮箱。<a href='http://forum.baystgroup.ca/identityverify/active.php?verify=".$token."&identity=".$identity."' target='_blank'> http://forum.baystgroup.ca/identityverify/active.php?verify=".$token."&identity=".$identity."如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问，该链接24小时内有效。如果此次激活请求非你本人所发，请忽略本邮件。";
 	$rs = mail($to,$subject,$message);
 	if($rs==1){
-		$msg = '邮件已发送，请登录到您的邮箱验证';	
+		echo '<script>alert("邮件已发送，请尽快登陆到您的邮箱验证");</script>';	
 	}
-echo $msg;
-}
+ }
 mysql_close($con);
 ?>
